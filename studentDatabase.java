@@ -16,11 +16,16 @@ public class studentDatabase {
             String password = "root";
             connection = DriverManager.getConnection(url, userName, password);
             while (true) {
-                System.out.println("1. Add user Data.");
-                System.out.println("2. display user Details.");
-                System.out.println("3. Update User Data");
-                System.out.println("4. Delete User Data");
-                System.out.println("5.Exit.");
+                System.out.println("--------------------------------");
+                System.out.println("|         MAIN MENU             |");
+                System.out.println("--------------------------------");
+                System.out.println("|    1. Add user Data.          |");
+                System.out.println("|    2. display user Details.   |");
+                System.out.println("|    3. Update User Data        |");
+                System.out.println("|    4. Delete User Data        |");
+                System.out.println("|    5.Exit.                    |");
+                System.out.println("--------------------------------");
+                System.out.println();
                 System.out.print("Enter your Choice: ");
                 int choice = sc.nextInt();
                 switch (choice) {
@@ -37,6 +42,7 @@ public class studentDatabase {
                         std.deleteUser();
                         break;
                     case 5:
+                        System.out.println("Exit...");
                         System.exit(0);
                         break;
                     default:
@@ -53,6 +59,8 @@ public class studentDatabase {
         String sql="Insert into student(name,department,email_id) values(?,?,?)";
         PreparedStatement preparedStatement=connection.prepareStatement(sql);
         sc.nextLine();
+        System.out.println();
+        System.out.println("--------------------------------");
         System.out.print("Enter Student Name: ");
         preparedStatement.setString(1,sc.nextLine());
         System.out.print("Enter Department Name: ");
@@ -63,12 +71,17 @@ public class studentDatabase {
         if(rows>0){
             System.out.println("Data Insert successfully...");
         }
+        System.out.println("--------------------------------");
     }
 
     public void showUser() throws SQLException{
-        System.out.println("----------------------------");
-        System.out.println("1. Show All Data.");
-        System.out.println("2. Show Particular data.");
+        System.out.println("--------------------------------");
+        System.out.println("|         DISPLAY MENU         |");
+        System.out.println("--------------------------------");
+        System.out.println("|      1. Show All Data.       |");
+        System.out.println("|      2. Show Particular data.|");
+        System.out.println("--------------------------------");
+        System.out.println();
         System.out.print("Enter your choice: ");
         int choice=sc.nextInt();
         String sql="";
@@ -87,6 +100,7 @@ public class studentDatabase {
 
         Statement statement=connection.createStatement();
         ResultSet result=statement.executeQuery(sql);
+        System.out.println();
         System.out.println("---------------------------------------------------------------");
         System.out.printf("%-15s %-20s %-15s %-25s%n", "Roll No", "Name", "Department", "Email");
         System.out.println("---------------------------------------------------------------");
@@ -173,9 +187,13 @@ public class studentDatabase {
     }
 
     public void deleteUser() throws SQLException{
-        System.out.println("----------------------------");
-        System.out.println("1. Delete All Data.");
-        System.out.println("2. Delete Specific Row.");
+        System.out.println("--------------------------------");
+        System.out.println("|          DELETE MENU          |");
+        System.out.println("--------------------------------");
+        System.out.println("|      1. Delete All Data.      |");
+        System.out.println("|      2. Delete Specific Row.  |");
+        System.out.println("--------------------------------");
+        System.out.println();
         System.out.print("Enter your choice: ");
         int choice=sc.nextInt();
         String sql="";
